@@ -1,6 +1,8 @@
 package com.example.nicholasarduini.baseconverter;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,9 +28,9 @@ public class MainActivity extends Activity {
         final Button hexB = (Button) this.findViewById(R.id.hex);
 
         //set all the buttons to red on start
-        decB.setBackgroundResource(R.color.red);
-        binB.setBackgroundResource(R.color.red);
-        hexB.setBackgroundResource(R.color.red);
+        decB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+        binB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+        hexB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
 
         //on dec button press check if the input is valid, then it will convert the input into a dec
         //else report error
@@ -37,16 +39,16 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if (numberConverter.convertToDec(textF.getText()) != null) {
                     textF.setText("d:" + numberConverter.convertToDec(textF.getText()));
-                    decB.setBackgroundResource(R.color.green);
-                    binB.setBackgroundResource(R.color.red);
-                    hexB.setBackgroundResource(R.color.red);
-                    textF.setBackgroundResource(textF.getSolidColor());
+                    decB.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                    binB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    hexB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
                 } else {
-                    textF.setText(error);
-                    decB.setBackgroundResource(R.color.red);
-                    binB.setBackgroundResource(R.color.red);
-                    hexB.setBackgroundResource(R.color.red);
-                    textF.setBackgroundResource(R.color.red);
+                    textF.setText("");
+                    textF.setHint(error);
+                    decB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    binB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    hexB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    textF.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
                 }
             }
         });
@@ -60,17 +62,16 @@ public class MainActivity extends Activity {
                     String temp = Integer.toBinaryString(Integer.parseInt(
                             numberConverter.convertToDec(textF.getText())));
                     textF.setText("b:" + temp);
-                    decB.setBackgroundResource(R.color.red);
-                    binB.setBackgroundResource(R.color.green);
-                    hexB.setBackgroundResource(R.color.red);
-                    textF.setBackgroundResource(textF.getSolidColor());
-
+                    decB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    binB.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+                    hexB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
                 } else {
-                    textF.setText(error);
-                    decB.setBackgroundResource(R.color.red);
-                    binB.setBackgroundResource(R.color.red);
-                    hexB.setBackgroundResource(R.color.red);
-                    textF.setBackgroundResource(R.color.red);
+                    textF.setText("");
+                    textF.setHint(error);
+                    decB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    binB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    hexB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    textF.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
                 }
             }
         });
@@ -84,16 +85,16 @@ public class MainActivity extends Activity {
                     String temp = Integer.toHexString(Integer.parseInt(
                             numberConverter.convertToDec(textF.getText())));
                     textF.setText("h:" + temp);
-                    decB.setBackgroundResource(R.color.red);
-                    binB.setBackgroundResource(R.color.red);
-                    hexB.setBackgroundResource(R.color.green);
-                    textF.setBackgroundResource(textF.getSolidColor());
+                    decB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    binB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    hexB.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
                 } else {
-                    textF.setText(error);
-                    decB.setBackgroundResource(R.color.red);
-                    binB.setBackgroundResource(R.color.red);
-                    hexB.setBackgroundResource(R.color.red);
-                    textF.setBackgroundResource(R.color.red);
+                    textF.setText("");
+                    textF.setHint(error);
+                    decB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    binB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    hexB.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
+                    textF.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
                 }
             }
         });
@@ -113,11 +114,6 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        //if (id == R.id.action_settings) {
-        //    return true;
-        //}
 
         return super.onOptionsItemSelected(item);
     }
